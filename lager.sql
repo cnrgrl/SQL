@@ -1,0 +1,146 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Sep 29, 2020 at 08:06 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `lager`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `MANUFACTURER`
+--
+
+CREATE TABLE `MANUFACTURER` (
+  `MANUFACTURER_ID` int(11) NOT NULL,
+  `MANUFACTURER_NAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `MANUFACTURER`
+--
+
+INSERT INTO `MANUFACTURER` (`MANUFACTURER_ID`, `MANUFACTURER_NAME`) VALUES
+(1, 'Apple'),
+(2, 'Samsung');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `PRODUCT`
+--
+
+CREATE TABLE `PRODUCT` (
+  `PRODUCT_ID` int(11) NOT NULL,
+  `PRODUCT_NAME` varchar(50) NOT NULL,
+  `PRODUCT_QUANTITY` int(20) NOT NULL,
+  `WAREHOUSE_ID` int(11) NOT NULL,
+  `MANUFACTURER_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `PRODUCT`
+--
+
+INSERT INTO `PRODUCT` (`PRODUCT_ID`, `PRODUCT_NAME`, `PRODUCT_QUANTITY`, `WAREHOUSE_ID`, `MANUFACTURER_ID`) VALUES
+(1, 'Computer', 1, 1, 1),
+(2, 'Computerq', 1, 1, 2),
+(3, 'rrrrrr', 2, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `WAREHOUSE`
+--
+
+CREATE TABLE `WAREHOUSE` (
+  `WAREHOUSE_ID` int(11) NOT NULL,
+  `WAREHOUSE_NAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `WAREHOUSE`
+--
+
+INSERT INTO `WAREHOUSE` (`WAREHOUSE_ID`, `WAREHOUSE_NAME`) VALUES
+(1, 'Garbsen'),
+(2, 'Laatzen');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `MANUFACTURER`
+--
+ALTER TABLE `MANUFACTURER`
+  ADD PRIMARY KEY (`MANUFACTURER_ID`);
+
+--
+-- Indexes for table `PRODUCT`
+--
+ALTER TABLE `PRODUCT`
+  ADD PRIMARY KEY (`PRODUCT_ID`),
+  ADD KEY `WAREHOUSE_ID` (`WAREHOUSE_ID`) USING BTREE,
+  ADD KEY `MANUFACTURER_ID` (`MANUFACTURER_ID`),
+  ADD KEY `MANUFACTURER_ID_2` (`MANUFACTURER_ID`);
+
+--
+-- Indexes for table `WAREHOUSE`
+--
+ALTER TABLE `WAREHOUSE`
+  ADD PRIMARY KEY (`WAREHOUSE_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `MANUFACTURER`
+--
+ALTER TABLE `MANUFACTURER`
+  MODIFY `MANUFACTURER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `PRODUCT`
+--
+ALTER TABLE `PRODUCT`
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `WAREHOUSE`
+--
+ALTER TABLE `WAREHOUSE`
+  MODIFY `WAREHOUSE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `PRODUCT`
+--
+ALTER TABLE `PRODUCT`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`WAREHOUSE_ID`) REFERENCES `WAREHOUSE` (`WAREHOUSE_ID`),
+  ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`MANUFACTURER_ID`) REFERENCES `MANUFACTURER` (`MANUFACTURER_ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
