@@ -2,7 +2,7 @@
 <?php
 $hostname = "localhost";
 $dbuser = "root";
-$dbpassword = "";
+$dbpassword = "root";
 $dbname = "lager";
 
 ?>

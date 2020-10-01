@@ -1,4 +1,4 @@
 <?php
 
-echo "<h2>VERWALTUNGSSYSTEM</h2>";
+echo "<h2>LAGERVERWALTUNG</h2>";
 ?>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/table.css">
     <title>Verwaltung</title>
 </head>
 <body>
@@ -17,6 +18,7 @@
         <a href="?page=product">Products</a>
         <a href="?page=warehouse">Warehouses</a>
         <a href="?page=manufacturer">Manufacturers</a>
+        <a href="?page=category">Category</a>
      
 
         
