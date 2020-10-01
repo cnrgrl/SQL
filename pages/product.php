@@ -9,7 +9,7 @@ if(isset($_POST['search']))
     // using concat mysql function
     $query = "SELECT * FROM `PRODUCT` WHERE CONCAT(`PRODUCT_ID`, `PRODUCT_NAME`, `PRODUCT_QUANTITY`, `WAREHOUSE_ID`, `MANUFACTURER_ID`) LIKE '%".$valueToSearch."%'";
     $search_result = filterTable($query);
-
+//commit test
 }
 else {
     $query = "SELECT * FROM `PRODUCT`";
